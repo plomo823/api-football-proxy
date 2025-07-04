@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f8f8;
+  color: #333;
+}
+header, footer {
+  background: #0a3d62;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+section {
+  padding: 1rem;
+  background: #f0f0f0;
+}
+main {
+  padding: 1rem;
+}
+select {
+  margin-right: 1rem;
+}
+.card {
+  background: white;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
