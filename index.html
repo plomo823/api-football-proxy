@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GolData - Partidos en Vivo y Predicciones</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados en Vivo - GolData</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>⚽ GolData Live</h1>
-    <p>Partidos en vivo, predicciones inteligentes y estadísticas por liga y país</p>
+    <h1>⚽ Resultados en Vivo - GolData</h1>
   </header>
-
-  <section>
-    <label for="country-select">Filtrar por país:</label>
-    <select id="country-select"></select>
-
-    <label for="league-select">Filtrar por liga:</label>
-    <select id="league-select"></select>
-  </section>
-
   <main>
-    <h2>📺 Partidos en Vivo</h2>
-    <div id="matches-container">Cargando partidos...</div>
-
-    <h2>📊 Predicciones</h2>
-    <div id="predictions-container">Cargando predicciones...</div>
+    <section id="resultados">
+      <h2>Partidos en Vivo</h2>
+      <div id="partidos">Cargando...</div>
+    </section>
   </main>
-
-  <footer>
-    <p>© 2025 GolData. Todos los derechos reservados.</p>
-  </footer>
-
-  <script src="live.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
