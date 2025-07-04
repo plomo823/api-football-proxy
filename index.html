@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resultados en Vivo - GolData</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resultados en Vivo | GolData</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f0f0f0; }
+    h1 { color: #333; }
+    .match { background: white; padding: 10px; margin: 10px 0; border-radius: 6px; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>⚽ Resultados en Vivo - GolData</h1>
-  </header>
-  <main>
-    <section id="resultados">
-      <h2>Partidos en Vivo</h2>
-      <div id="partidos">Cargando...</div>
-    </section>
-  </main>
-  <script src="script.js"></script>
+  <h1>⚽ Resultados en Vivo</h1>
+  <div id="matches">Cargando...</div>
+
+  <script>
+    fetch('https://api-football-proxy-kmkf.onrender.com/v3/fixtures?live=all', {
+      headers: {
+        'x-apisports-key': '4712cb300b003d94f61b5a63a6b22f2b'
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('matches');
+      container.innerHTML = '';
+      if (!data.response.length) {
+        container.innerHTML = '<p>No hay partidos en vivo.</p>';
+        return;
+      }
+      data.response.forEach(match => {
+        const el = document.createElement('div');
+        el.className = 'match';
+        el.innerHTML = `
+          <strong>${match.teams.home.name}</strong> ${match.goals.home} - ${match.goals.away} <strong>${match.teams.away.name}</strong><br>
+          🕒 ${match.fixture.status.elapsed}' - ${match.league.name}
+        `;
+        container.appendChild(el);
+      });
+    })
+    .catch(err => {
+      document.getElementById('matches').innerHTML = 'Error al cargar resultados';
+      console.error(err);
+    });
+  </script>
 </body>
 </html>
